@@ -1,0 +1,15 @@
+<app-my-add-todo-component (todoAdd)="addTodo($event)"></app-my-add-todo-component>
+
+<div *ngIf="todos.length>0; then TodoList else EmptyTodoList"></div>
+<ng-template #TodoList>
+    <div *ngFor="let todo of todos">
+        <app-my-todo-item-details [todo]="todo" (todoDelete)="deleteTodo($event)"></app-my-todo-item-details>
+    </div>
+</ng-template>
+<ng-template #EmptyTodoList>
+    <div class="container text-center">
+        <h4>Todo List is Empty!!</h4>
+    </div>
+    
+</ng-template>
+

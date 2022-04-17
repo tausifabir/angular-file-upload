@@ -1,0 +1,24 @@
+<div class="container my-3">
+    <h3>Add Todo</h3>
+   
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+                <label  for="tasktittle">Tittle</label>
+                <input type="text" [(ngModel)]="title" class="form-control mb-3" placeholder="Enter Tittle" id="tasktittle" name="title"/>
+        
+                <label  for="taskdesc">Description</label>
+                <input type="text" [(ngModel)]="desc" name="desc" class="form-control" placeholder="Enter Description" id="taskdesc"/> 
+                
+                <div class="mx-4 mt-3">
+                    <input type="checkbox" class="form-check-input" id="activetask">
+                    <label class="form-check-label" for="activetask">Active</label>
+                </div>
+               
+                
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    
+</div>
