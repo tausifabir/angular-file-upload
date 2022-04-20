@@ -31,7 +31,7 @@ export class FileUploadService {
       responseType: 'json',
     });*/
 
-    this.httpClient.post(this.resourceUrl,formData)
+    this.httpClient.post(this.SERVER_URL,formData)
       .subscribe(
       (res)=>{console.log(res);}
     );
