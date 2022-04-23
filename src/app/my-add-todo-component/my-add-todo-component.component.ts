@@ -13,6 +13,8 @@ export class MyAddTodoComponentComponent implements OnInit {
   title!:String;
   desc!:String;
   selectedFiles!: FileList;
+  selectedPreviewFiles: string[] = [];
+  uploadClicked: boolean = false;
   constructor(private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
@@ -33,10 +35,27 @@ export class MyAddTodoComponentComponent implements OnInit {
 
   }
 
-  onFileChange(event: any){
-   this.selectedFiles = event.target.files;
-    console.log("todo added");
+  onFileChange(event:any){
+    this.selectedFiles = event.target.files;
+    //const reader = new FileReader();
+    //this.selectedPreviewFiles = event.target.reuslt;
+    //reader.readAsDataURL(event.target.files[0]);
+    for (let i = 0; i < event.target.files.length; i++) {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.selectedPreviewFiles.push(reader.result as string);
+      }
+      // @ts-ignore
+      reader.readAsDataURL((event.target as HTMLInputElement).files[i]);
+    }
+  }
+  removeFile(i:number){
+    const index = this.selectedPreviewFiles.indexOf(this.selectedPreviewFiles[i]);
+    this.selectedPreviewFiles.splice(index, 1);
+  }
 
+  uploadFile(i:number,event:any){
+    this.selectedPreviewFiles[i] = event.target.files[0];
   }
 
 

@@ -20,4 +20,5 @@ export class MyTodoItemDetailsComponent implements OnInit {
     console.log("delete button is clicked");
   }
 
+
 }
